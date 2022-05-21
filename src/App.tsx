@@ -1,10 +1,12 @@
+import { AuthProvider } from "./context/AuthContex";
 import MainRouter from "./router/MainRouter";
-import LoginView from "./views/Auth/LoginView";
 
 function App() {
   return (
-    < >
-      <MainRouter />
+    <>
+      <AuthProvider>
+        <MainRouter />
+      </AuthProvider>
     </>
   )
 }

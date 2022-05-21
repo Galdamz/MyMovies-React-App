@@ -2,19 +2,14 @@ import { useEffect, useContext, useLayoutEffect } from 'react';
 import { Navigate, Outlet } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContex';
 
-const PrivateRoute = () => {
+const PublicRoute = () => {
 
     const { accessToken, getToken } = useContext(AuthContext);
-
-    // useEffect(() => {
-    //     console.log(accessToken);
-    // }, [])
-
     return (
         < >
-            {(accessToken) ? <Outlet /> : <Navigate to={'/auth/login'} />}
+            {(accessToken) ? <Navigate to={'/'} /> : <Outlet />}
         </>
     )
 }
 
-export default PrivateRoute;
+export default PublicRoute;
