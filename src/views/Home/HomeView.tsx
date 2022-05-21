@@ -1,8 +1,10 @@
-import React from 'react'
+import Layout from '../../components/Global/Navigation/Layout';
 
 const HomeView = () => {
     return (
-        <div>HomeView</div>
+        < >
+            <Layout />
+        </>
     )
 }
 
