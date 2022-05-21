@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 
 const LoginView = () => {
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
     const [isIncorrect, setIsIncorrect] = useState(false);
 
@@ -13,21 +13,19 @@ const LoginView = () => {
         try {
             setIsIncorrect(false);
             const response = await fetchAuth.post('', data)
-            console.log(response);
         } catch (error) {
             setIsIncorrect(true);
-            console.log(error);
         }
     });
 
     return (
         <Box
-            minHeight={{ base: '80vh', md: '80vh' }}
+            minHeight={{ base: '60vh', md: '80vh' }}
             display={'flex'}
             alignItems={'center'}
             justifyContent={'center'}>
             <form onSubmit={onSubmit}>
-                <SimpleGrid columns={1} spacing={4} minWidth={{ sm: '300px', md: '310px' }}>
+                <SimpleGrid columns={1} spacing={4} minWidth={{ base: '300px', sm: '300px', md: '310px' }}>
                     <Box>
                         <Heading>Log In</Heading>
                     </Box>
