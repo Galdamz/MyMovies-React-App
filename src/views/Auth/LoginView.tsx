@@ -19,7 +19,6 @@ const LoginView = () => {
         try {
             setIsIncorrect(false);
             const response = await fetchAuth.post('', data);
-            saveToken(response.data.token || false);
             navigate('/', { replace: true });
         } catch (error) {
             setIsIncorrect(true);

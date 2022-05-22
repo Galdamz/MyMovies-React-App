@@ -4,10 +4,9 @@ import { AuthContext } from '../../context/AuthContex';
 
 const PublicRoute = () => {
 
-    const { accessToken, getToken } = useContext(AuthContext);
     return (
         < >
-            {(accessToken) ? <Outlet /> : <Navigate to={'/auth/login'} />}
+            {(false) ? <Outlet /> : <Navigate to={'/auth/login'} />}
         </>
     )
 }

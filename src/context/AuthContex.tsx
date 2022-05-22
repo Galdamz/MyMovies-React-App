@@ -1,10 +1,12 @@
-import { createContext, FC, ReactNode, useEffect, useState } from "react";
+import { createContext, FC, ReactNode, useEffect, useLayoutEffect, useState } from "react";
+import useAuth from "../hooks/useAuth";
+import { Auth } from "../types/types";
 
 export const AuthContext = createContext<Context>({
-    getToken: Function,
-    deleteToken: Function,
-    saveToken: Function,
-    setAccessToken: Function
+    isLoading: false,
+    auth: false,
+    updateToken: Function,
+    saveToken: Function
 });
 
 interface Props {
@@ -12,45 +14,30 @@ interface Props {
 };
 
 interface Context {
-    accessToken?: Boolean | String,
-    setAccessToken: Function,
-    saveToken: Function,
-    getToken: Function,
-    deleteToken: Function,
-    isReady?: Boolean,
+    isLoading: Boolean,
+    auth?: Auth,
+    saveToken?: Function,
+    deleteToken?: Function,
+    updateToken?: Function,
 }
 
 export const AuthProvider: FC<Props> = ({ children }) => {
 
-    const [isReady, setIsReady] = useState<Boolean>(false);
-    const [accessToken, setAccessToken] = useState<String | Boolean>(false);
-
     useEffect(() => {
-        setAccessToken(localStorage.getItem('x-access-token') || false);
-    }, [isReady, accessToken]);
-
-    const saveToken = (accessToken: String) => {
-        localStorage.setItem('x-access-token', accessToken.toString());
-        setAccessToken(localStorage.getItem('x-access-token') || false);
-    }
-
-    const getToken = () => {
-        setAccessToken(localStorage.getItem('x-access-token') || false);
-    }
-
-    const deleteToken = () => {
-        localStorage.removeItem('x-access-token');
-        setAccessToken(false);
-    }
+        updateToken()
+        setIsLoading(false)
+    }, []);
+    const [isLoading, setIsLoading] = useState<Boolean>(true);
+    const { auth, saveToken, deleteToken, updateToken } = useAuth();
 
     return (
         <AuthContext.Provider
             value={{
-                getToken,
-                accessToken,
-                setAccessToken,
+                isLoading,
+                auth,
                 saveToken,
-                deleteToken
+                deleteToken,
+                updateToken
             }}
         >
             {children}
