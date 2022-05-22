@@ -29,7 +29,6 @@ export const AuthProvider: FC<Props> = ({ children }) => {
             updateToken()
             setIsLoading(false)
         }else{
-            console.log('Es falso');
         }
     }, []);
 

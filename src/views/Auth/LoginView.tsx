@@ -1,10 +1,11 @@
 import { useState, useContext } from 'react'
 import fetchAuth from '../../api/fetchAuth';
 import { useForm } from "react-hook-form";
-import { Heading, Input, SimpleGrid, Button, FormControl, FormLabel, Box, Center, Text } from '@chakra-ui/react';
+import { Heading, Input, SimpleGrid, Button, FormControl, FormLabel, Box, Center, Text, Image } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import { AuthContext } from '../../context/AuthContex';
+import MovieIcon from '../../assets/icons/movie.png';
 
 const LoginView = () => {
 
@@ -33,8 +34,12 @@ const LoginView = () => {
             justifyContent={'center'}>
             <form onSubmit={onSubmit}>
                 <SimpleGrid columns={1} spacing={4} minWidth={{ base: '300px', sm: '300px', md: '310px' }}>
+                    <Box display={'flex'} alignItems={'center'}>
+                        <Image src={MovieIcon} maxHeight={'8em'} />
+                    </Box>
                     <Box>
                         <Heading>Log In</Heading>
+
                     </Box>
                     <Box>
                         <FormControl isInvalid={isIncorrect}>

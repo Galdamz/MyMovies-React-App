@@ -14,7 +14,6 @@ const PrivateRoute = (props: Props) => {
     const { auth, isLoading } = props;
 
     useEffect(() => {
-        console.log(auth)
     }, [])
 
     return (
