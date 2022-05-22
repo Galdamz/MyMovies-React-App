@@ -4,15 +4,11 @@ import { AuthContext } from '../../context/AuthContex';
 
 const PrivateRoute = () => {
 
-    const { accessToken, getToken } = useContext(AuthContext);
-
-    // useEffect(() => {
-    //     console.log(accessToken);
-    // }, [])
+    const { accessToken } = useContext(AuthContext);
 
     return (
         < >
-            {(accessToken) ? <Outlet /> : <Navigate to={'/auth/login'} />}
+            {(true) ? <Outlet /> : <Navigate to={'/auth/login'} />}
         </>
     )
 }

@@ -7,7 +7,7 @@ const PublicRoute = () => {
     const { accessToken, getToken } = useContext(AuthContext);
     return (
         < >
-            {(accessToken) ? <Navigate to={'/'} /> : <Outlet />}
+            {(accessToken) ? <Outlet /> : <Navigate to={'/auth/login'} />}
         </>
     )
 }

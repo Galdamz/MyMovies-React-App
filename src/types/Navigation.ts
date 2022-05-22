@@ -8,5 +8,6 @@ export interface MovieData {
     poster_path: String,
     release_date: String,
     overview: String,
-    vote_average: String
+    vote_average: String,
+    id: String
 }   

@@ -9,12 +9,11 @@ import { MovieData } from '../../types/Navigation';
 
 const HomeView = () => {
 
+    const [collectionMovies, setCollectionMovies] = useState();
+
     const {
         data: popularMovies,
-        error,
-        isFetching,
         isLoading,
-        isSuccess
     } = useQuery("popularMovies", getPopularMovies);
 
     return (

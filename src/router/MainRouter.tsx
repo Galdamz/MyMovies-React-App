@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import NavBar from '../components/Global/Navigation/NavBar';
 import LoginView from '../views/Auth/LoginView';
+import DetailsView from '../views/Details/DetailsView';
 import HomeView from '../views/Home/HomeView';
 import PrivateRoute from './routes/PrivateRoute';
 import PublicRoute from './routes/PublicRoute';
@@ -10,10 +11,9 @@ const MainRouter = () => {
         <BrowserRouter>
             <Routes>
                 <Route element={<PrivateRoute />} >
-                    <Route path='/' element={<HomeView />} />
-                </Route>
-                <Route element={<PublicRoute />} >
-                    <Route path='/auth/login' element={<LoginView />} />
+                    <Route index element={<HomeView />} />
+                    <Route path='/movie/:id' element={<DetailsView />} />
+                    <Route path='*' element={<Navigate to={'/'} replace={true} />} />
                 </Route>
             </Routes>
         </BrowserRouter>

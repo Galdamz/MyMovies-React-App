@@ -5,8 +5,6 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { QueryClientProvider } from 'react-query'
 import { queryClient } from './api/queryClient'
 import 'nprogress/nprogress.css';
-import 'nprogress/nprogress.js';
-
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
