@@ -21,7 +21,8 @@
     "react-dom": "^18.0.0",
     "react-hook-form": "^7.31.2",
     "react-query": "^3.39.0",
-    "react-router-dom": "^6.3.0"
+    "react-router-dom": "^6.3.0",
+    "use-local-storage": "^2.3.6"
   },
   "devDependencies": {
     "@types/nprogress": "^0.2.0",

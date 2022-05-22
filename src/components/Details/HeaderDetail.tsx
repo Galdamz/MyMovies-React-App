@@ -1,19 +1,45 @@
 import { Box, Grid, GridItem, Heading, Img, VStack, Text, Flex, Tag, Button, IconButton } from "@chakra-ui/react"
 import { StarIcon } from '@chakra-ui/icons';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { DetailData } from "../../types/Navigation";
-
+import useLocalStorage from 'use-local-storage';
 interface Props {
     DetailData: DetailData
 }
 
 const HeaderDetail = (props: Props) => {
 
+    const { DetailData } = props
+    const [isOnFavorites, setIsOnFavorites] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const [favoriteMovies, setFavoriteMovies] = useLocalStorage<Array<any>>("favorited_movies", []);
+
     useEffect(() => {
         window.scrollTo(0, 0)
+        setIsOnFavorites(checkIsOnFavorites(DetailData.id));
     }, [])
 
-    const { DetailData } = props
+    useEffect(() => {
+        setIsOnFavorites(checkIsOnFavorites(DetailData.id));
+    }, [favoriteMovies])
+
+    const checkIsOnFavorites = (movieID: String) => {
+        const movies = favoriteMovies.filter((movie: DetailData) => movie.id === movieID)
+        if (movies.length > 0) {
+            return true
+        }
+        return false
+    }
+
+    const deleteItem = () => {
+        const movies = favoriteMovies.filter((movie: DetailData) => movie.id !== DetailData.id)
+        setFavoriteMovies(movies);
+    }
+
+    const addItem = () => {
+        setFavoriteMovies([...favoriteMovies, DetailData]);
+    }
+
     return (
         <VStack m={4}>
             <Grid
@@ -36,19 +62,31 @@ const HeaderDetail = (props: Props) => {
                     </Flex>
                 </GridItem>
                 <GridItem rowSpan={{ base: 1, sm: 6, md: 6 }} colSpan={{ base: 1, sm: 6, md: 6 }}>
-                    <Flex flexDirection={{ base: 'initial' }}>
+                    <Flex flexDirection={{ base: 'column', md: 'initial' }} alignItems={'center'}>
                         <Heading>
                             {DetailData.original_title}
                         </Heading>
-                        <IconButton
-                            aria-label="Add to favorite"
-                            icon={<StarIcon />}
-                            colorScheme='blue'
-                            mx={4}
-                        >
-                        </IconButton>
+                        {
+                            (isOnFavorites)
+                                ? (<Button
+                                    onClick={deleteItem}
+                                    aria-label="Add to favorite"
+                                    colorScheme='red'
+                                    mx={4}
+                                    leftIcon={<StarIcon />}>
+                                    Remove From Favorites
+                                </Button>)
+                                : (<Button
+                                    onClick={addItem}
+                                    aria-label="Add to favorite"
+                                    colorScheme='green'
+                                    mx={4}
+                                    leftIcon={<StarIcon />}>
+                                    Add To Favorites
+                                </Button>)
+                        }
                     </Flex>
-                    <Text fontSize={'xl'}>( {DetailData.release_date.split('-')[0]} )</Text>
+                    <Text fontSize={'xl'} mt={'2'}>( {DetailData.release_date.split('-')[0]} )</Text>
                     <Text fontSize={'lg'}>{DetailData.overview}</Text>
                     <Box mt={4}>
                         < >

@@ -5,8 +5,7 @@ import { Auth } from "../types/types";
 export const AuthContext = createContext<Context>({
     isLoading: false,
     auth: false,
-    updateToken: Function,
-    saveToken: Function
+    updateToken: () => null,
 });
 
 interface Props {
@@ -16,26 +15,29 @@ interface Props {
 interface Context {
     isLoading: Boolean,
     auth?: Auth,
-    saveToken?: Function,
     deleteToken?: Function,
     updateToken?: Function,
+    setIsLoading?: Function,
 }
 
 export const AuthProvider: FC<Props> = ({ children }) => {
 
+    const { auth, saveToken, deleteToken, updateToken, setIsLoading, isLoading } = useAuth();
+
     useEffect(() => {
-        updateToken()
-        setIsLoading(false)
+        if (isLoading) {
+            updateToken()
+            setIsLoading(false)
+        }else{
+            console.log('Es falso');
+        }
     }, []);
-    const [isLoading, setIsLoading] = useState<Boolean>(true);
-    const { auth, saveToken, deleteToken, updateToken } = useAuth();
 
     return (
         <AuthContext.Provider
             value={{
                 isLoading,
                 auth,
-                saveToken,
                 deleteToken,
                 updateToken
             }}

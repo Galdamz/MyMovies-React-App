@@ -1,25 +1,25 @@
 import { useState, useContext } from 'react'
 import fetchAuth from '../../api/fetchAuth';
 import { useForm } from "react-hook-form";
-import { AuthContext } from '../../context/AuthContex';
 import { Heading, Input, SimpleGrid, Button, FormControl, FormLabel, Box, Center, Text } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
+import { AuthContext } from '../../context/AuthContex';
 
 const LoginView = () => {
 
+    const { saveToken, setIsLoading } = useAuth();
     const navigate = useNavigate();
-    
-    const { register, handleSubmit, formState: { errors } } = useForm();
-
+    const { register, handleSubmit } = useForm();
     const [isIncorrect, setIsIncorrect] = useState(false);
-
-    const { saveToken } = useContext(AuthContext);
 
     const onSubmit = handleSubmit(async (data) => {
         try {
             setIsIncorrect(false);
             const response = await fetchAuth.post('', data);
+            saveToken(response.data.token || false);
             navigate('/', { replace: true });
+            setIsLoading(true);
         } catch (error) {
             setIsIncorrect(true);
         }

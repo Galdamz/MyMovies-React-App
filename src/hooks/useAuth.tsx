@@ -3,6 +3,7 @@ import { Auth } from '../types/types';
 
 const useAuth = () => {
     const [auth, setAuth] = useState<Auth>(false);
+    const [isLoading, setIsLoading] = useState<Boolean>(true);
 
     const saveToken = (accessToken: String) => {
         localStorage.setItem('x-access-token', String(accessToken));
@@ -19,7 +20,7 @@ const useAuth = () => {
         setAuth(token);
     }
 
-    return { auth, saveToken, deleteToken, updateToken };
+    return { auth, saveToken, deleteToken, updateToken, isLoading, setIsLoading };
 }
 
 export default useAuth;

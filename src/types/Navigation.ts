@@ -21,6 +21,7 @@ export interface DetailData {
     poster_path: String,
     id: String,
     original_title: String,
+    title: String,
     release_date: String,
     vote_average: String,
     vote_count: String,

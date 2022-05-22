@@ -4,6 +4,7 @@ import NavBar from '../components/Global/Navigation/NavBar';
 import { AuthContext } from '../context/AuthContex';
 import LoginView from '../views/Auth/LoginView';
 import DetailsView from '../views/Details/DetailsView';
+import FavoriteView from '../views/Favorite/FavoriteView';
 import HomeView from '../views/Home/HomeView';
 import SearchView from '../views/Search/SearchView';
 import PrivateRoute from './routes/PrivateRoute';
@@ -18,13 +19,13 @@ const MainRouter = () => {
             <Routes>
                 <Route element={<PrivateRoute auth={auth || false} isLoading={isLoading} />}>
                     <Route index element={<HomeView />} />
-                </Route>
-                {/* <Route element={<PrivateRoute />} >
-                    <Route index element={<HomeView />} />
                     <Route path='/movie/:id' element={<DetailsView />} />
                     <Route path='/search' element={<SearchView />} />
-                    <Route path='*' element={<Navigate to={'/'} replace={true} />} />
-                </Route> */}
+                    <Route path='/favorites' element={<FavoriteView />} />
+                </Route>
+                <Route element={<PublicRoute auth={auth || false} isLoading={isLoading} />}>
+                    <Route path='/auth/login' element={<LoginView />} />
+                </Route>
             </Routes>
         </BrowserRouter>
     )

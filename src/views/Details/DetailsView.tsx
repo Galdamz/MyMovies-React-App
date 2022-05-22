@@ -55,6 +55,4 @@ const DetailsView = () => {
     )
 }
 
-
-
 export default DetailsView
