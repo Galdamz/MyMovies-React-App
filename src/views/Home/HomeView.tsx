@@ -20,9 +20,11 @@ const HomeView = () => {
         < >
             <Layout />
             <VStack mx={4} mb={8}>
-                <Center>
-                    <Heading>Most Popular Movies</Heading>
-                </Center>
+                <Flex>
+                    <Box>
+                        <Heading textAlign={'start'}>Most Popular Movies</Heading>
+                    </Box>
+                </Flex>
                 < >
                     {
                         (isLoading)

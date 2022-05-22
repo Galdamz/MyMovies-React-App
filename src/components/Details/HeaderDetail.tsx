@@ -24,7 +24,11 @@ const HeaderDetail = (props: Props) => {
                 <GridItem rowSpan={{ base: 1, sm: 6, md: 4 }} colSpan={{ base: 1, sm: 6, md: 4 }}>
                     <Flex justifyContent={'center'}>
                         <Img
-                            src={`${import.meta.env.VITE_API_MOVIE_IMAGES}${DetailData.poster_path}`}
+                            src={
+                                (DetailData.poster_path)
+                                    ? `${import.meta.env.VITE_API_MOVIE_IMAGES}${DetailData.poster_path}`
+                                    : 'http://placehold.jp/2b6cb0/ffffff/500x800.png?text=MyMovies%20App'
+                            }
                             aria-label='Movie Image'
                             maxHeight={{ base: '400px' }}
                             loading={'lazy'}

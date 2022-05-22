@@ -41,6 +41,12 @@ export const getDetails = async (movieID: String): Promise<any> => {
     return data;
 }
 
+export const searchMovies = async (movieID: String): Promise<any> => {
+    const encodedSearch = encodeURIComponent(movieID.toString());
+    const { data } = await fetchMovies.get(`search/movie/?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&query=${encodedSearch}`);
+    return data;
+}
+
 export const getSimilarMovies = async (movieID: String): Promise<any> => {
     const { data } = await fetchMovies.get(`movie/${movieID}/similar?api_key=${import.meta.env.VITE_API_KEY}&language=en-US`);
     return data;

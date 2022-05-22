@@ -9,10 +9,17 @@ import {
     InputRightElement,
 } from "@chakra-ui/react";
 
+
 import { SearchIcon, StarIcon, } from "@chakra-ui/icons";
 import { Link as RouterLink } from "react-router-dom";
 import { Link } from '@chakra-ui/react'
+import { useNavigate } from "react-router-dom";
+import { useState, KeyboardEvent, ChangeEvent } from "react";
+import SearchInput from "../SearchInput";
+
 const NavBar = () => {
+
+
     return (
         < >
             <Flex minWidth='max-content' alignItems='center' gap='2'>
@@ -24,19 +31,7 @@ const NavBar = () => {
                     </Link>
                 </ButtonGroup>
                 <Box p='2'>
-                    <InputGroup>
-                        <Box minWidth={'40vh'}>
-                            <Input type='text' placeholder='Search a Movie' />
-                        </Box>
-                        <InputRightElement
-                            children={
-                                <IconButton
-                                    colorScheme={'blue'}
-                                    aria-label="Search a Movie"
-                                    icon={<SearchIcon />}
-                                />
-                            } />
-                    </InputGroup>
+                    <SearchInput />
                 </Box>
             </Flex>
         </>

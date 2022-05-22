@@ -3,6 +3,7 @@ import NavBar from '../components/Global/Navigation/NavBar';
 import LoginView from '../views/Auth/LoginView';
 import DetailsView from '../views/Details/DetailsView';
 import HomeView from '../views/Home/HomeView';
+import SearchView from '../views/Search/SearchView';
 import PrivateRoute from './routes/PrivateRoute';
 import PublicRoute from './routes/PublicRoute';
 
@@ -13,6 +14,7 @@ const MainRouter = () => {
                 <Route element={<PrivateRoute />} >
                     <Route index element={<HomeView />} />
                     <Route path='/movie/:id' element={<DetailsView />} />
+                    <Route path='/search' element={<SearchView />} />
                     <Route path='*' element={<Navigate to={'/'} replace={true} />} />
                 </Route>
             </Routes>

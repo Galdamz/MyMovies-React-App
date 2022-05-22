@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Flex, Img, StatArrow, StatHelpText, Text, useDisclosure, SlideFade, Collapse, Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon } from '@chakra-ui/react'
+import { Box, Button, Divider, Flex, Image, StatArrow, StatHelpText, Text, useDisclosure, SlideFade, Collapse, Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon } from '@chakra-ui/react'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MovieData } from '../../types/Navigation';
@@ -17,9 +17,6 @@ const MovieCard = (props: Props) => {
 
     const [isOnHover, setIsOnHover] = useState<Boolean>(false);
 
-    const handleOver = (value: Boolean) => {
-        setIsOnHover(value);
-    }
 
     const sentToDetailView = () => {
         navigate('/movie/' + MovieData.id);
@@ -28,8 +25,12 @@ const MovieCard = (props: Props) => {
     return (
         <Box borderWidth={'2px'} p={''} maxWidth={{ lg: '30vh' }}>
             <Box>
-                <Img
-                    src={`${import.meta.env.VITE_API_MOVIE_IMAGES}${MovieData.poster_path}`}
+                <Image
+                    src={
+                        (MovieData.poster_path)
+                            ? `${import.meta.env.VITE_API_MOVIE_IMAGES}${MovieData.poster_path}`
+                            : 'http://placehold.jp/2b6cb0/ffffff/500x500.png?text=MyMovies%20App'
+                    }
                     aria-label='Movie Image'
                     maxHeight={{}}
                     loading={'lazy'}
@@ -40,7 +41,7 @@ const MovieCard = (props: Props) => {
                 <Box
                     textAlign='center'
                 >
-                    <Text fontWeight={'bold'} fontSize={'2xl'}
+                    <Text fontWeight={'bold'} fontSize={'2xl'} overflow={'auto'}
                         maxHeight='10rem'>{MovieData.title}
                     </Text>
                     <Text fontStyle={'revert'} fontWeight={'extrabold'}>{MovieData.release_date}</Text>
