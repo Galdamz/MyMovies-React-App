@@ -3,17 +3,16 @@ import React, { Key, useEffect, useState } from 'react'
 import MovieTime from '../../components/Animations/MovieTime';
 import Layout from '../../components/Global/Navigation/Layout';
 import MovieCard from '../../components/Home/MovieCard';
-import useMovieStorage from '../../hooks/useMovieStorage';
 import { DetailData, MovieData } from '../../types/Navigation';
+import useLocalStorage from 'use-local-storage';
 
 const FavoriteView = () => {
 
-
-    const { fetchData, data } = useMovieStorage("favorited_movies");
     const [isLoading, setIsLoading] = useState(true)
 
+    const [data, setData] = useLocalStorage("favorited_movies", []);
+    
     useEffect(() => {
-        fetchData()
         setIsLoading(false);
         return () => {
 
