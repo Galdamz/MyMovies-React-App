@@ -5,10 +5,11 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { QueryClientProvider } from 'react-query'
 import { queryClient } from './api/queryClient'
 import 'nprogress/nprogress.css';
+import theme from './configs/chakaUI'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <QueryClientProvider client={queryClient}>
         <App />
       </QueryClientProvider>

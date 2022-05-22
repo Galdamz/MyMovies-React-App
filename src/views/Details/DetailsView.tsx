@@ -1,5 +1,5 @@
 import { Box, Grid, GridItem, VStack } from '@chakra-ui/react';
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import { getCasting, getDetails, getSimilarMovies } from '../../api/fetchMovies';
@@ -12,6 +12,10 @@ import Layout from '../../components/Global/Navigation/Layout'
 const DetailsView = () => {
 
     const { id } = useParams()
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     const {
         data: casting,

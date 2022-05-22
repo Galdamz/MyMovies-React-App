@@ -1,5 +1,6 @@
 import {
     Box,
+    Button,
     ButtonGroup,
     Divider,
     Flex,
@@ -25,9 +26,7 @@ const NavBar = () => {
             <Flex minWidth='max-content' alignItems='center' gap='2'>
                 <ButtonGroup gap='2'>
                     <Link as={RouterLink} to='/favorites'>
-                        <IconButton aria-label="Favorite Movies" icon={<StarIcon />}
-                            colorScheme={'yellow'}
-                        />
+                        <Button leftIcon={<StarIcon />} colorScheme={'yellow'}>Favorites Movies</Button>
                     </Link>
                 </ButtonGroup>
                 <Box p='2'>

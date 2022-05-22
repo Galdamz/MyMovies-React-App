@@ -16,6 +16,9 @@ const HeaderDetail = (props: Props) => {
 
     useEffect(() => {
         window.scrollTo(0, 0)
+    }, [])
+    
+    useEffect(() => {
         setIsOnFavorites(checkIsOnFavorites(DetailData.id));
     }, [])
 
@@ -62,7 +65,7 @@ const HeaderDetail = (props: Props) => {
                     </Flex>
                 </GridItem>
                 <GridItem rowSpan={{ base: 1, sm: 6, md: 6 }} colSpan={{ base: 1, sm: 6, md: 6 }}>
-                    <Flex flexDirection={{ base: 'column', md: 'initial' }} alignItems={'center'}>
+                    <Flex flexDirection={{ base: 'column', lg: 'initial' }} alignItems={'center'}>
                         <Heading>
                             {DetailData.original_title}
                         </Heading>
@@ -72,6 +75,7 @@ const HeaderDetail = (props: Props) => {
                                     onClick={deleteItem}
                                     aria-label="Add to favorite"
                                     colorScheme='red'
+                                    px={4}
                                     mx={4}
                                     leftIcon={<StarIcon />}>
                                     Remove From Favorites
@@ -80,6 +84,7 @@ const HeaderDetail = (props: Props) => {
                                     onClick={addItem}
                                     aria-label="Add to favorite"
                                     colorScheme='green'
+                                    px={6}
                                     mx={4}
                                     leftIcon={<StarIcon />}>
                                     Add To Favorites
