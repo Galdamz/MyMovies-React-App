@@ -1,26 +1,10 @@
 import { Box, Grid, GridItem, Heading, Img, VStack, Text, Flex, Tag, Button, IconButton } from "@chakra-ui/react"
 import { StarIcon } from '@chakra-ui/icons';
 import { useEffect } from "react";
+import { DetailData } from "../../types/Navigation";
+
 interface Props {
     DetailData: DetailData
-}
-
-interface Genres {
-    id: Number,
-    name: String
-}
-
-interface DetailData {
-    poster_path: String,
-    id: String,
-    original_title: String,
-    release_date: String,
-    vote_average: String,
-    vote_count: String,
-    overview: String,
-    genres: Array<Genres>,
-    backdrop_path: String,
-    status: String
 }
 
 const HeaderDetail = (props: Props) => {
@@ -28,13 +12,13 @@ const HeaderDetail = (props: Props) => {
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
-    
+
     const { DetailData } = props
     return (
         <VStack m={4}>
             <Grid
                 templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(12, 1fr)' }}
-                templateRows={{ base: 'repeat(1, 1fr)', md: 'repeat(12, 1fr)' }}
+                templateRows={{ base: 'repeat(1, 1fr)', md: 'repeat(4, 1fr)' }}
                 gap={6}
             >
                 <GridItem rowSpan={{ base: 1, sm: 6, md: 4 }} colSpan={{ base: 1, sm: 6, md: 4 }}>
@@ -66,9 +50,9 @@ const HeaderDetail = (props: Props) => {
                         < >
                             <Text fontSize={'xl'} fontWeight={'bold'}>Genres</Text>
                             {
-                                DetailData.genres.map((value, item) => {
+                                DetailData.genres.map((value, index) => {
                                     return (
-                                        <Tag my={1} mr={2} colorScheme={'blue'}>{value.name}</Tag>
+                                        <Tag my={1} mr={2} colorScheme={'blue'} key={index}>{value.name}</Tag>
                                     )
                                 })
                             }
@@ -80,25 +64,6 @@ const HeaderDetail = (props: Props) => {
                     </Box>
                 </GridItem>
             </Grid>
-            {/* <Grid
-                templateRows={{ base: 'repeat(1, 1fr)', lg: 'repeat(2, 1fr)' }}
-                templateColumns={{ base: 'repeat(1, 1fr)', lg: 'repeat(3, 1fr)' }}
-            >
-                <GridItem rowSpan={1} colSpan={1} justifyContent={'center'} alignItems={'center'}>
-                    <Box border={4} borderWidth={'4px'}>
-                        <Img
-                            src={`${import.meta.env.VITE_API_MOVIE_IMAGES}${DetailData.poster_path}`}
-                            aria-label='Movie Image'
-                            maxHeight={{ base: '400px' }}
-                            loading={'lazy'}
-                        />
-                    </Box>
-                </GridItem >
-                <GridItem rowSpan={1} colSpan={1} textAlign={{ base: 'center' }}>
-                    <Heading>{DetailData.original_title}</Heading>
-                    <Text fontSize={'3xl'}>( {DetailData.release_date.split('-')[0]} )</Text>
-                </GridItem>
-            </Grid> */}
         </VStack>
     )
 }

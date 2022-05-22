@@ -40,4 +40,9 @@ export const getDetails = async (movieID: String): Promise<any> => {
     const { data } = await fetchMovies.get(`movie/${movieID}?api_key=${import.meta.env.VITE_API_KEY}&language=en-US`);
     return data;
 }
+
+export const getSimilarMovies = async (movieID: String): Promise<any> => {
+    const { data } = await fetchMovies.get(`movie/${movieID}/similar?api_key=${import.meta.env.VITE_API_KEY}&language=en-US`);
+    return data;
+}
 export default fetchMovies;
