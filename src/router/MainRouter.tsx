@@ -6,6 +6,7 @@ import LoginView from '../views/Auth/LoginView';
 import DetailsView from '../views/Details/DetailsView';
 import FavoriteView from '../views/Favorite/FavoriteView';
 import HomeView from '../views/Home/HomeView';
+import NotFound from '../views/NotFound/NotFound';
 import SearchView from '../views/Search/SearchView';
 import PrivateRoute from './routes/PrivateRoute';
 import PublicRoute from './routes/PublicRoute';
@@ -26,6 +27,7 @@ const MainRouter = () => {
                 <Route element={<PublicRoute auth={auth || false} isLoading={isLoading} />}>
                     <Route path='/auth/login' element={<LoginView />} />
                 </Route>
+                <Route path='*' element={<NotFound />} />
             </Routes>
         </BrowserRouter>
     )

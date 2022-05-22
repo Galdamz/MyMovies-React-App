@@ -45,7 +45,7 @@ const SearchView = () => {
         <>
             <Layout />
             <VStack mx={4} mb={8}>
-                <Flex direction={'column'} gap={'3'}>
+                <Flex direction={'column'} gap={'4'}>
                     <Box minW={''}>
                         <Heading textAlign={'center'}>Search a Movie</Heading>
                     </Box>
@@ -59,7 +59,7 @@ const SearchView = () => {
                         {
                             (isIdle)
                                 ? <Box>
-                                    <Text>Example: Shrek 3</Text>
+                                    <Text color='gray.500'>Example: Lego Batman</Text>
                                 </Box>
                                 : <Box>
                                     {

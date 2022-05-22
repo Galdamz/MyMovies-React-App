@@ -11,7 +11,7 @@ const RelatedMovies = (props: Props) => {
   const { movies } = props;
   return (
     <VStack >
-      <Heading>Top Picks For You</Heading>
+      <Heading fontSize={'3xl'}>Top Picks For You</Heading>
       <SimpleGrid
         columns={{ base: 1, sm: 2, md: 3, lg: 4 }}
         spacing={10}
