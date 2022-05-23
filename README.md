@@ -6,6 +6,8 @@ MyMovies is a React App Where You Can See the Most Popular Movies, Search and Ma
 
 Important: Due to Vercel's CORS Policy, it's probably the search box on route ```/search``` will not work...
 
+This is because TheMovieDB API Redirects to a http (unsecure) link instead a https (secure) link.
+
 You can know more about this [here](https://vercel.com/support/articles/how-to-enable-cors)
 
 
