@@ -25,7 +25,8 @@ const SearchView = () => {
         isLoading,
         refetch,
         isIdle,
-        isFetching
+        isFetching,
+        isError
     } = useQuery(['searchedMovies', String(filter)], ({ queryKey }) => searchMovies(queryKey[1]), {
         enabled: false,
     })
@@ -45,47 +46,53 @@ const SearchView = () => {
         <>
             <Layout />
             <VStack mx={4} mb={8}>
-                <Flex direction={'column'} gap={'4'}>
-                    <Box minW={''}>
-                        <Heading textAlign={'center'}>Search a Movie</Heading>
-                    </Box>
-                    <Box>
-                        <SearchInput />
-                    </Box>
-                    <Box>
-                        <Heading></Heading>
-                    </Box>
-                    <Box>
-                        {
-                            (isIdle)
-                                ? <Box>
-                                    <Text color='gray.500'>Example: Lego Batman</Text>
-                                </Box>
-                                : <Box>
-                                    {
-                                        (isLoading)
-                                            ? (<MovieTime />)
-                                            :
-                                            (
-                                                <SimpleGrid
-                                                    columns={{ base: 1, sm: 2, md: 3, lg: 4 }}
-                                                    spacing={10}
-                                                    justifyContent={'center'}
-                                                >
-                                                    {movies.results.map((value: MovieData, index: Key | null | undefined) => (
-                                                        <MovieCard MovieData={value} key={index} />
-                                                    )
-                                                    )}
-                                                </SimpleGrid>
-                                            )
-                                    }
-                                </Box>
-                        }
 
-                    </Box>
-                </Flex>
                 < >
 
+                    <Flex direction={'column'} gap={'4'}>
+                        <Box minW={''}>
+                            <Heading textAlign={'center'}>Search a Movie</Heading>
+                        </Box>
+                        <Box>
+                            <SearchInput />
+                        </Box>
+                        <Box>
+                            <Heading></Heading>
+                        </Box>
+                        <Box>
+                            {
+                                (isIdle)
+                                    ? <Box>
+                                        <Text color='gray.500'>Example: Lego Batman</Text>
+                                    </Box>
+                                    : <Box>
+                                        {
+                                            (isLoading)
+                                                ? (<MovieTime />)
+                                                :
+                                                (
+                                                    <>
+                                                        {
+                                                            (!isError) ? <>
+                                                                <SimpleGrid
+                                                                    columns={{ base: 1, sm: 2, md: 3, lg: 4 }}
+                                                                    spacing={10}
+                                                                    justifyContent={'center'}
+                                                                >
+                                                                    {movies.results.map((value: MovieData, index: Key | null | undefined) => (
+                                                                        <MovieCard MovieData={value} key={index} />
+                                                                    )
+                                                                    )}
+                                                                </SimpleGrid></> : <Text>Error Searching the movie, try again later...</Text>
+                                                        }
+                                                    </>
+                                                )
+                                        }
+                                    </Box>
+                            }
+
+                        </Box>
+                    </Flex>
                 </>
             </VStack>
         </>
