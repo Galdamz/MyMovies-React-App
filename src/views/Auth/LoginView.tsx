@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import { Heading, Input, SimpleGrid, Button, FormControl, FormLabel, Box, Center, Text, Image } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import MovieIcon from '../../assets/icons/movie.png';
-import useAuth from '../../hooks/useAuth';
 import { AuthContext } from '../../context/AuthContext';
 
 const LoginView = () => {

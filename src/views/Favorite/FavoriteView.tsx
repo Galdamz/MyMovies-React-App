@@ -1,9 +1,9 @@
 import { Box, Flex, Heading, SimpleGrid, VStack, Text } from '@chakra-ui/react';
-import React, { Key, useEffect, useState } from 'react'
+import { Key, useEffect, useState } from 'react'
 import MovieTime from '../../components/Animations/MovieTime';
 import Layout from '../../components/Global/Navigation/Layout';
 import MovieCard from '../../components/Home/MovieCard';
-import { DetailData, MovieData } from '../../types/Navigation';
+import { DetailData } from '../../types/Navigation';
 import useLocalStorage from 'use-local-storage';
 
 const FavoriteView = () => {

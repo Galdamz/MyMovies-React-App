@@ -1,5 +1,5 @@
-import { Box, Grid, GridItem, VStack } from '@chakra-ui/react';
-import React, { useEffect } from 'react'
+import { Box } from '@chakra-ui/react';
+import { useEffect } from 'react'
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import { getCasting, getDetails, getSimilarMovies } from '../../api/fetchMovies';

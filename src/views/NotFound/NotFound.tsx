@@ -1,4 +1,4 @@
-import { Box, Button, Heading, Image, Link, Text } from '@chakra-ui/react'
+import { Box, Button, Heading, Image, Link } from '@chakra-ui/react'
 import Layout from '../../components/Global/Navigation/Layout'
 import NotFoundImage from './../../assets/svg/undraw_page_not_found_re_e9o6.svg'
 import { Link as RouterLink } from 'react-router-dom';

@@ -1,5 +1,5 @@
-import { Box, Center, Container, Divider, Flex, Heading, SimpleGrid, VStack } from '@chakra-ui/react';
-import { Key, useState } from 'react';
+import { Box, Flex, Heading, SimpleGrid, VStack } from '@chakra-ui/react';
+import { Key } from 'react';
 import { useQuery } from 'react-query';
 import { getPopularMovies } from '../../api/fetchMovies';
 import MovieTime from '../../components/Animations/MovieTime';
@@ -8,8 +8,6 @@ import MovieCard from '../../components/Home/MovieCard';
 import { MovieData } from '../../types/Navigation';
 
 const HomeView = () => {
-
-    const [collectionMovies, setCollectionMovies] = useState();
 
     const {
         data: popularMovies,
