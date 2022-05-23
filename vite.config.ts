@@ -9,7 +9,7 @@ export default defineConfig({
     },
     proxy: {
       "/api": {
-        target: "https://api.themoviedb.org/3",
+        target: "https://api.themoviedb.org",
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path.replace(/^\/api/, ""),
