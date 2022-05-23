@@ -3,24 +3,23 @@ import fetchAuth from '../../api/fetchAuth';
 import { useForm } from "react-hook-form";
 import { Heading, Input, SimpleGrid, Button, FormControl, FormLabel, Box, Center, Text, Image } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
-import useAuth from '../../hooks/useAuth';
-import { AuthContext } from '../../context/AuthContex';
 import MovieIcon from '../../assets/icons/movie.png';
+import useAuth from '../../hooks/useAuth';
+import useLocalStorage from 'use-local-storage';
 
 const LoginView = () => {
 
-    const { saveToken, setIsLoading } = useAuth();
     const navigate = useNavigate();
     const { register, handleSubmit } = useForm();
     const [isIncorrect, setIsIncorrect] = useState(false);
+    const [authToken, setAuthToken] = useLocalStorage<String | Boolean>("x-access-token", false);
 
     const onSubmit = handleSubmit(async (data) => {
         try {
             setIsIncorrect(false);
             const response = await fetchAuth.post('', data);
-            saveToken(response.data.token || false);
-            navigate('/', { replace: true });
-            setIsLoading(true);
+            setAuthToken(response.data.token)
+            navigate('/');
         } catch (error) {
             setIsIncorrect(true);
         }

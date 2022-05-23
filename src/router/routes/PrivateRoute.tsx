@@ -1,6 +1,6 @@
 import { useEffect, useContext, useLayoutEffect } from 'react';
 import { Navigate, Outlet } from 'react-router-dom'
-import { AuthContext } from '../../context/AuthContex';
+import useAuth from '../../hooks/useAuth';
 import { Auth } from '../../types/types';
 
 interface Props {
@@ -8,22 +8,14 @@ interface Props {
     isLoading: Boolean,
 }
 
+const PrivateRoute = () => {
 
-const PrivateRoute = (props: Props) => {
-
-    const { auth, isLoading } = props;
-
-    useEffect(() => {
-        console.log('Hola')
-    }, [])
+    const {authToken, setAuthToken} = useAuth();
 
     return (
         < >
             {
-                (isLoading)
-                    ? <></>
-                    :
-                    <>{(auth) ? <Outlet /> : <Navigate to={'/auth/login'} />}</>
+                (authToken) ? <Outlet/> : <Navigate to={'/auth/login'}/>
             }
         </>
     )
