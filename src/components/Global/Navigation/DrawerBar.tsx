@@ -19,6 +19,7 @@ import React, { useRef } from 'react'
 import { Link } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons'
 import { Link as RouterLink } from 'react-router-dom';
+import LogoutBtn from './LogoutBtn';
 
 const DrawerBar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -57,7 +58,7 @@ const DrawerBar = () => {
                     <DrawerBody>
                     </DrawerBody>
                     <DrawerFooter>
-                        <Button colorScheme={'blue'} minW={'full'}>Log Out</Button>
+                        <LogoutBtn />
                     </DrawerFooter>
                 </DrawerContent>
             </Drawer>

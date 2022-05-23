@@ -17,7 +17,7 @@ const HeaderDetail = (props: Props) => {
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
-    
+
     useEffect(() => {
         setIsOnFavorites(checkIsOnFavorites(DetailData.id));
     }, [])
@@ -108,6 +108,16 @@ const HeaderDetail = (props: Props) => {
                     <Box>
                         <Text fontSize={'xl'} fontWeight={'bold'} mt={2}>Status</Text>
                         <Tag my={1} mr={2} colorScheme={'green'}>{DetailData.status}</Tag>
+                    </Box>
+                    <Box display={'flex'} gap={8} mb={8}>
+                        <Box>
+                            <Text fontSize={'xl'} fontWeight={'bold'} mt={2}>Vote Average</Text>
+                            <Text fontSize={'lg'}>{DetailData.vote_average}</Text>
+                        </Box>
+                        <Box>
+                            <Text fontSize={'xl'} fontWeight={'bold'} mt={2}>Vote Count</Text>
+                            <Text fontSize={'lg'}>{DetailData.vote_count}</Text>
+                        </Box>
                     </Box>
                 </GridItem>
             </Grid>

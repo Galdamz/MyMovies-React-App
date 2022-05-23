@@ -29,7 +29,7 @@ const FavoriteView = () => {
                     </Box>
                 </Flex>
                 {
-                    (data.length > 1) ? < >
+                    (data.length > 0) ? < >
                         <Box>
                             {
                                 (isLoading)
@@ -49,7 +49,7 @@ const FavoriteView = () => {
                                     )
                             }
                         </Box>
-                    </> : <Text>You Don't Any Favorite Movie yet</Text>
+                    </> : <Text>You Have Don't Any Favorite Movie Yet</Text>
                 }
             </VStack>
         </>

@@ -51,7 +51,7 @@ const MovieCard = (props: Props) => {
                     <Text>{MovieData.overview}</Text>
                 </Box>
                 <Box>
-                    <Text maxHeight={'20px'}>
+                    <Text maxHeight={'20px'} fontWeight={'bold'} fontSize={'larger'}>
                         Average Vote: {MovieData.vote_average}
                     </Text>
                 </Box>

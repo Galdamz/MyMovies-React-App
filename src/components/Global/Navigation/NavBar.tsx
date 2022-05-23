@@ -17,6 +17,7 @@ import { Link } from '@chakra-ui/react'
 import { useNavigate } from "react-router-dom";
 import { useState, KeyboardEvent, ChangeEvent } from "react";
 import SearchInput from "../SearchInput";
+import LogoutBtn from "./LogoutBtn";
 
 const NavBar = () => {
 
@@ -31,6 +32,9 @@ const NavBar = () => {
                 </ButtonGroup>
                 <Box p='2'>
                     <SearchInput />
+                </Box>
+                <Box>
+                    <LogoutBtn />
                 </Box>
             </Flex>
         </>
