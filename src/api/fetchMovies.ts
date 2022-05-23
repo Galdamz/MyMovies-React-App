@@ -6,6 +6,7 @@ NProgress.configure({ showSpinner: false });
 const fetchMovies = axios.create({
     baseURL: import.meta.env.VITE_API_MOVIE_URL,
     headers: {
+        
     }
 });
 

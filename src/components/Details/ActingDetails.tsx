@@ -1,5 +1,7 @@
 import { Box, Heading, Image, SimpleGrid, VStack, Text } from '@chakra-ui/react';
 import { CastingDetail } from '../../types/Navigation';
+import NotFoundImage from '../../assets/images/NotImageFound.png';
+
 import {
     Accordion,
     AccordionItem,
@@ -42,7 +44,7 @@ const ActingDetails = (props: Props) => {
                                                         src={
                                                             (value.profile_path)
                                                                 ? `${import.meta.env.VITE_API_MOVIE_IMAGES}${value.profile_path}`
-                                                                : 'http://placehold.jp/2b6cb0/ffffff/500x750.png?text=MyMovies%20App'
+                                                                : NotFoundImage
                                                         }
                                                         aria-label='Movie Image'
                                                         maxHeight={{}}

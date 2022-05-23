@@ -3,6 +3,8 @@ import { StarIcon } from '@chakra-ui/icons';
 import { useEffect, useState } from "react";
 import { DetailData } from "../../types/Navigation";
 import useLocalStorage from 'use-local-storage';
+import NotFoundImage from '../../assets/images/NotImageFound.png';
+
 interface Props {
     DetailData: DetailData
 }
@@ -55,7 +57,7 @@ const HeaderDetail = (props: Props) => {
                             src={
                                 (DetailData.poster_path)
                                     ? `${import.meta.env.VITE_API_MOVIE_IMAGES}${DetailData.poster_path}`
-                                    : 'http://placehold.jp/2b6cb0/ffffff/500x800.png?text=MyMovies%20App'
+                                    : NotFoundImage
                             }
                             aria-label='Movie Image'
                             maxHeight={{ base: '400px' }}
