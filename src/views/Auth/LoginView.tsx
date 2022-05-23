@@ -5,21 +5,21 @@ import { Heading, Input, SimpleGrid, Button, FormControl, FormLabel, Box, Center
 import { useNavigate } from 'react-router-dom';
 import MovieIcon from '../../assets/icons/movie.png';
 import useAuth from '../../hooks/useAuth';
-import useLocalStorage from 'use-local-storage';
+import { AuthContext } from '../../context/AuthContext';
 
 const LoginView = () => {
 
     const navigate = useNavigate();
     const { register, handleSubmit } = useForm();
     const [isIncorrect, setIsIncorrect] = useState(false);
-    const [authToken, setAuthToken] = useLocalStorage<String | Boolean>("x-access-token", false);
+    const { authToken, setAuthToken, setIsLoading } = useContext(AuthContext);
 
     const onSubmit = handleSubmit(async (data) => {
         try {
             setIsIncorrect(false);
             const response = await fetchAuth.post('', data);
-            setAuthToken(response.data.token)
-            navigate('/');
+            setAuthToken(response.data.token || false)
+            navigate('/')
         } catch (error) {
             setIsIncorrect(true);
         }

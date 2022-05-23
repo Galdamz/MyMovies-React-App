@@ -10,13 +10,20 @@ interface Props {
 
 const PrivateRoute = () => {
 
-    const { authToken, setAuthToken } = useAuth();
+    const { authToken, setAuthToken, isLoading } = useAuth();
 
     return (
         < >
             {
-                (authToken) ? <Navigate to={'/'} /> : <Outlet />
+                (isLoading)
+                    ? <></>
+                    : <>
+                        {
+                            (authToken) ? <Navigate to={'/'} /> : <Outlet />
+                        }
+                    </>
             }
+
         </>
     )
 }

@@ -1,5 +1,6 @@
 import { useEffect, useContext, useLayoutEffect } from 'react';
 import { Navigate, Outlet } from 'react-router-dom'
+import { AuthContext } from '../../context/AuthContext';
 import useAuth from '../../hooks/useAuth';
 import { Auth } from '../../types/types';
 
@@ -10,12 +11,23 @@ interface Props {
 
 const PrivateRoute = () => {
 
-    const {authToken, setAuthToken} = useAuth();
+    const { authToken, setAuthToken, isLoading } = useContext(AuthContext)
+
+    useEffect(() => {
+        return () => {
+        }
+    }, [])
 
     return (
         < >
             {
-                (authToken) ? <Outlet/> : <Navigate to={'/auth/login'}/>
+                (isLoading)
+                    ? <></>
+                    : <>
+                        {
+                            (authToken) ? <Outlet /> : <Navigate to={'/auth/login'} />
+                        }
+                    </>
             }
         </>
     )

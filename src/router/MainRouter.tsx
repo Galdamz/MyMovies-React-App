@@ -22,7 +22,9 @@ const MainRouter = () => {
                     <Route path='/search' element={<SearchView />} />
                     <Route path='/favorites' element={<FavoriteView />} />
                 </Route>
-                <Route path='/auth/login' element={<LoginView />} />
+                <Route element={<PublicRoute />}>
+                    <Route path='/auth/login' element={<LoginView />} />
+                </Route>
                 <Route path='*' element={<NotFound />} />
             </Routes>
         </BrowserRouter>
