@@ -6,6 +6,14 @@ export default defineConfig({
   server: {
     watch: {
       usePolling: true,
-    }
+    },
+    proxy: {
+      "/api": {
+        target: "https://api.themoviedb.org/3/",
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/api/, ""),
+      },
+    },
   }
 })
