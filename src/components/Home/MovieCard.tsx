@@ -1,5 +1,4 @@
-import { Box, Button, Divider, Flex, Image, StatArrow, StatHelpText, Text, useDisclosure, SlideFade, Collapse, Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon } from '@chakra-ui/react'
-import { useState } from 'react';
+import { Box, Button, Divider, Flex, Image, Text } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom';
 import { MovieData } from '../../types/Navigation';
 
@@ -8,15 +7,9 @@ interface Props {
 }
 
 const MovieCard = (props: Props) => {
-
-
     const navigate = useNavigate();
-    const { isOpen, onToggle } = useDisclosure()
 
     const { MovieData } = props;
-
-    const [isOnHover, setIsOnHover] = useState<Boolean>(false);
-
 
     const sentToDetailView = () => {
         navigate('/movie/' + MovieData.id);

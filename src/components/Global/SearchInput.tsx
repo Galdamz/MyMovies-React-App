@@ -1,6 +1,6 @@
 import { SearchIcon } from '@chakra-ui/icons'
 import { Box, Flex, IconButton, Input, InputGroup, InputRightElement } from '@chakra-ui/react'
-import React, { ChangeEvent, useEffect, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 const SearchInput = () => {

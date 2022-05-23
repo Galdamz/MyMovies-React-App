@@ -11,7 +11,6 @@ const HeaderDetail = (props: Props) => {
 
     const { DetailData } = props
     const [isOnFavorites, setIsOnFavorites] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
     const [favoriteMovies, setFavoriteMovies] = useLocalStorage<Array<any>>("favorited_movies", []);
 
     useEffect(() => {

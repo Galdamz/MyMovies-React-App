@@ -1,6 +1,4 @@
-import { useContext, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
-import NavBar from '../components/Global/Navigation/NavBar';
 import LoginView from '../views/Auth/LoginView';
 import DetailsView from '../views/Details/DetailsView';
 import FavoriteView from '../views/Favorite/FavoriteView';

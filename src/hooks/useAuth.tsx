@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import useLocalStorage from 'use-local-storage';
 
 const useAuth = () => {

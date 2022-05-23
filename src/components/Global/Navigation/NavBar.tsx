@@ -2,20 +2,13 @@ import {
     Box,
     Button,
     ButtonGroup,
-    Divider,
     Flex,
-    IconButton,
-    Input,
-    InputGroup,
-    InputRightElement,
 } from "@chakra-ui/react";
 
 
-import { SearchIcon, StarIcon, } from "@chakra-ui/icons";
+import { StarIcon, } from "@chakra-ui/icons";
 import { Link as RouterLink } from "react-router-dom";
 import { Link } from '@chakra-ui/react'
-import { useNavigate } from "react-router-dom";
-import { useState, KeyboardEvent, ChangeEvent } from "react";
 import SearchInput from "../SearchInput";
 import LogoutBtn from "./LogoutBtn";
 

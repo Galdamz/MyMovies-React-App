@@ -1,7 +1,4 @@
-import { useQuery } from 'react-query';
-import React from 'react'
-import { getCasting } from '../../api/fetchMovies';
-import { Box, Divider, Heading, Image, SimpleGrid, VStack, Text, Flex } from '@chakra-ui/react';
+import { Box, Heading, Image, SimpleGrid, VStack, Text } from '@chakra-ui/react';
 import { CastingDetail } from '../../types/Navigation';
 import {
     Accordion,
